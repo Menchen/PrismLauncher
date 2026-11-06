@@ -150,8 +150,12 @@ LaunchDecision LaunchController::decideLaunchMode()
             }
         }
     }
-
-
+    
+    if (!accountToCheck) {
+        m_actualLaunchMode = LaunchMode::Offline;
+        return LaunchDecision::Continue;
+    }
+    
     auto state = accountToCheck->accountState();
     const bool needsRefresh =
         m_wantedLaunchMode == LaunchMode::Normal && (state == AccountState::Offline || accountToCheck->shouldRefresh());
