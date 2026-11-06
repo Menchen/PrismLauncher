@@ -151,10 +151,6 @@ LaunchDecision LaunchController::decideLaunchMode()
         }
     }
 
-    if (!accountToCheck) {
-        m_actualLaunchMode = LaunchMode::Demo;
-        return LaunchDecision::Continue;
-    }
 
     auto state = accountToCheck->accountState();
     const bool needsRefresh =
